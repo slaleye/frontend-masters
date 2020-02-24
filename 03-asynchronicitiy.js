@@ -48,37 +48,43 @@ function brokenRecord() {
 
 function limitedRepeat() {
   // ADD CODE HERE
-  const sayHi = setInterval(() => (console.log('hi for now'), 1000));
-  const stopInterval = ceInteval(sayHi);  
-  
-  setTimeout(stopInterval, 5000);
-          
+  const intervalID = setInterval(() => console.log('hi for now'), 1000);
+  setTimeout(() => clearInterval(intervalID), 5000);       
 }
 // Uncomment the following line to check your work!
- limitedRepeat(); // should log (every second, for 5 seconds): hi for now
+// limitedRepeat(); // should log (every second, for 5 seconds): hi for now
 
 
 /* CHALLENGE 6 */
 
-function everyXsecsForYsecs() {
-  // ADD CODE HERE
+function everyXsecsForYsecs(func, interval, duration) {
+  // ADD CODE HERE 
+  const intervalID = setInterval(func,interval*1000);
+  setTimeout(() => clearInterval(intervalID) , duration*1000);
+  
 }
 // Uncomment the following lines to check your work!
-// function theEnd() {
-//   console.log('This is the end!');
-// }
-// everyXsecsForYsecs(theEnd, 2, 20); // should invoke theEnd function every 2 seconds, for 20 seconds): This is the end!
-
+ function theEnd() {
+   console.log('This is the end!');
+ }
+ // everyXsecsForYsecs(theEnd, 2, 20); // should invoke theEnd function every 2 seconds, for 20 seconds): This is the end!
+// everyXsecsForYsecs(theEnd, 1, 5); 
 
 /* CHALLENGE 7 */
 
 function delayCounter(target, wait) {
-
+  
+  return () => {
+    for( let i = 1 ; i < target; i++){
+         console.log(i +' '+ wait + ' milliseconds')
+    }
+ 
+  }
 }
 
 // UNCOMMENT THESE TO TEST YOUR WORK!
-// const countLogger = delayCounter(3, 1000)
-// countLogger();
+ const countLogger = delayCounter(3, 1000)
+ countLogger();
 // After 1 second, log 1
 // After 2 seconds, log 2
 // After 3 seconds, log 3
