@@ -125,7 +125,7 @@ const mike = personFromConstructor('Mike', 30);
 /*** CHALLENGE 3 of 3 ***/
 // add code here
 
-
+PersonConstructor.prototype.introduce = function(){console.log('Hi, my name is '+this.name)};
 // mike.introduce(); // -> Logs 'Hi, my name is Mike'
 
 
@@ -136,14 +136,15 @@ const mike = personFromConstructor('Mike', 30);
 /*** CHALLENGE 1 of 3 ***/
 
 class PersonClass {
-	constructor() {
+	constructor(name) {
     // add code here
-
-
+   this.name = name;
 	}
 
 	// add code here
-
+   greet = function () {
+   	console.log('hello');
+ 	}
 }
 
 
@@ -156,12 +157,23 @@ const george = new PersonClass;
 /*** CHALLENGE 2 of 3 ***/
 
 // add code here
+class DeveloperClass extends PersonClass {
+  
+  constructor(name){
+    super(name);
 
+  }
+  
+  introduce(){
+    console.log('Hello Wolrd, my name is '+ this.name);
+  }
+  
+}
 
 // /********* Uncomment these lines to test your work! *********/
-// const thai = new DeveloperClass('Thai', 32);
-// console.log(thai.name); // -> Logs 'Thai'
-// thai.introduce(); //-> Logs 'Hello World, my name is Thai'
+const thai = new DeveloperClass('Thai', 32);
+console.log(thai.name); // -> Logs 'Thai'
+thai.introduce(); //-> Logs 'Hello World, my name is Thai'
 
 
 
