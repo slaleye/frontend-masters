@@ -1,6 +1,7 @@
 function upper(strings,...values) {
     var ret = "";
     for (let i = 0; i < strings.length; i++) {
+        // strings indexes will always be + 1 of the values, therefor when i > 0 we can get the values by using -1
         if( i > 0){
             ret += String(values[i -1]).toUpperCase();
         }
