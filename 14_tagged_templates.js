@@ -1,12 +1,13 @@
 function upper(strings,...values) {
-    var str = "";
+    var ret = "";
     for (let i = 0; i < strings.length; i++) {
-        str += strings[i];
-        if(typeof values[i] == "string" && values[i].trim().length > 0){
-            str += values[i].toUpperCase();
-        }    
+        if( i > 0){
+            ret += String(values[i -1]).toUpperCase();
+        }
+        ret += strings[i];
+          
     }
-    return str;
+    return ret;
 }
 
 var name = "Salomon",
