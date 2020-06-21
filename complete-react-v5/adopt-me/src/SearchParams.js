@@ -9,7 +9,9 @@ const SearchParams = function SearchParams() {
   const [breed, BreedDropdown, setBreed] = useDropdown("Breed", "", breedList);
 
   /*useEffect Hook: schedule the function to run after the renders happen*/
+  // a Component can have many effects
 // Needs dependency to not run everytime
+// to run on once, have an empty array as dependency list
   useEffect(() => {
     setBreedList([]);
     setBreed("");
