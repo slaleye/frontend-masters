@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import pet, { ANIMALS } from "@frontendmasters/pet";
+import Results from "./Results";
 import useDropdown from "./useDropdown";
 
 const SearchParams = function SearchParams() {
@@ -7,11 +8,22 @@ const SearchParams = function SearchParams() {
   const [breedList, setBreedList] = useState([]);
   const [animal, AnimalDropdown] = useDropdown("Animal", "dog", ANIMALS);
   const [breed, BreedDropdown, setBreed] = useDropdown("Breed", "", breedList);
+  const [pets, setPets] = useState([]);
+
+  async function requestPets() {
+    const { animals } = await pet.animals({
+      location,
+      breed,
+      type: animal,
+    });
+
+    setPets(animals || []);
+  }
 
   /*useEffect Hook: schedule the function to run after the renders happen*/
   // a Component can have many effects
-// Needs dependency to not run everytime
-// to run on once, have an empty array as dependency list
+  // Needs dependency to not run everytime
+  // to run on once, have an empty array as dependency list
   useEffect(() => {
     setBreedList([]);
     setBreed("");
@@ -25,7 +37,13 @@ const SearchParams = function SearchParams() {
   return (
     <div className="search-params">
       <h1>{location}</h1>
-      <form action="">
+      <form
+        action=""
+        onSubmit={function submitForm(e) {
+          e.preventDefault();
+          requestPets();
+        }}
+      >
         <label htmlFor="location">
           Location
           <input
@@ -40,6 +58,7 @@ const SearchParams = function SearchParams() {
         <BreedDropdown />
         <button>Submit</button>
       </form>
+      <Results pets={pets} />
     </div>
   );
 };
