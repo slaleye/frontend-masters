@@ -8,4 +8,4 @@ An amazing course I highly recommend, as it is helping me in my job at Moltomedi
 Taking this course helps me in my design and JS skill in so many ways!
 In this course you can learn from Will Sentance (codesmith), Kyle Simpson ( @getify you don't Know JS ), 
 Brian holt (Microsoft, Netflix), Estelle Weyl (Mozilla Dev Network)
-and James Young( Netflix).
+and Jem Young( Netflix).
