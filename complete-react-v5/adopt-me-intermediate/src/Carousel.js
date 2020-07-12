@@ -1,24 +1,26 @@
 import React from "react";
 
-class Carousel extends React.Component {
+export default class Carousel extends React.Component {
   state = {
     photos: [],
-    active: 0
+    active: 0,
   };
+
   static getDerivedStateFromProps({ media }) {
-    let photos = ["http://placecorgi.com/600/600"];
+    let photos = ["http:/placecorgi.com/600/600"];
 
     if (media.length) {
       photos = media.map(({ large }) => large);
     }
-
     return { photos };
   }
-  handleIndexClick = event => {
+
+  handleIndexClick = (e) => {
     this.setState({
-      active: +event.target.dataset.index
+      active: parseInt(e.target.dataset.index),
     });
   };
+
   render() {
     const { photos, active } = this.state;
     return (
@@ -26,14 +28,14 @@ class Carousel extends React.Component {
         <img src={photos[active]} alt="animal" />
         <div className="carousel-smaller">
           {photos.map((photo, index) => (
-            // eslint-disable-next-line
+            //eslint-disable-next-line
             <img
               key={photo}
-              onClick={this.handleIndexClick}
               data-index={index}
+              onClick={this.handleIndexClick}
               src={photo}
-              className={index === active ? "active" : ""}
               alt="animal thumbnail"
+              className={index === active ? "active" : ""}
             />
           ))}
         </div>
@@ -41,5 +43,3 @@ class Carousel extends React.Component {
     );
   }
 }
-
-export default Carousel;
