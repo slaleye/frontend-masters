@@ -15,7 +15,7 @@ var A = repeater(10);
 console.log(A()); // AAAAAAAAA
 console.log(A()); // AAAAAAAAA
 
-*/
+
 
 //---------- Eager Execution 
 // DO it once and cache it
@@ -42,6 +42,21 @@ function repeater(count){
         }
         return str;
     }
+}
+
+var A = repeater(10);
+
+console.log(A()); // AAAAAAAAA
+
+console.log(A()); // AAAAAAAAA
+*/
+// Memoize
+
+function repeater(count){
+  
+    return memoize(function allTheAs(){
+         return   "".padStart(count,"A");
+    })
 }
 
 var A = repeater(10);
