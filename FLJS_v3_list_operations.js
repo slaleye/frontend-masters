@@ -122,3 +122,14 @@ function pipe(...fns) {
         },v);
     };
 }
+
+// Fusion
+var list = [2,5,8,11,14,17,20];
+
+var listRes = list.map(add1).map(mul2).map(div3);
+
+var listRes2 = list.map(
+    compose(div3,mul2,add1)
+);
+
+debugger
