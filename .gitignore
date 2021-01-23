@@ -3,3 +3,4 @@ object_destructuring_old.js
 object_destructuring_rest.js
 Array_destructuring.js
 temp.js
+.DS_Store
